@@ -4,12 +4,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+
 public class Matriz {
     Scanner in = new Scanner(System.in);
     
     int QtdeVertice;
-    public LinkedList<String> vertice;
-    //String [] vertice = new String [QtdeVertice];
+    String [] vertice;
     int[][] MatrizDistancia;
     int[][] MatrizAdj;
      
@@ -18,6 +18,10 @@ public class Matriz {
      int x = in.nextInt();
      x--;
      QtdeVertice = x;
+     x++;
+     vertice = new String [x];
+     MatrizDistancia = new int [x][x];
+     MatrizAdj = new int [x][x];
  }
  
     
@@ -26,40 +30,39 @@ public class Matriz {
         for (int i = 0; i <= QtdeVertice; i++) {
             System.out.println("DIGITE O VERTICE");
             String x = in.next();
-            vertice.add(x);
+            vertice[i] = x;
+            System.out.println(vertice[i]);
         }
     }
      
     public void ConstruindoMatrizDistancia(){
-        int [][] MatrizTemp = new int [QtdeVertice][QtdeVertice];
+       // MatrizDistancia = new int [QtdeVertice][QtdeVertice];
         
-        this.inicializaMatriz(MatrizTemp);
+        this.inicializaMatriz(MatrizDistancia);
         
         for (int i = 0; i <= QtdeVertice; i++) {
             for (int j = 0; j <= QtdeVertice; j++) {
-                System.out.println("QUAL A DISTANCIA ENTRE " + vertice.get(i) + " ENTRE " + vertice.get(j));
+                System.out.println("QUAL A DISTANCIA ENTRE " + vertice[i] + " ENTRE " + vertice[j]);
                 int distancia = in.nextInt();
-                MatrizTemp[i][j] = distancia;
+                MatrizDistancia[i][j] = distancia;
             }
             
         }
-        MatrizDistancia = MatrizTemp;
     }
     
        public void ConstruindoMatrizAdj(){
-        int [][] MatrizTemp = new int [QtdeVertice][QtdeVertice];
+       // MatrizAdj = new int [QtdeVertice][QtdeVertice];
            
-       this.inicializaMatriz(MatrizTemp);
+       this.inicializaMatriz(MatrizAdj);
     
         for (int i = 0; i <= QtdeVertice; i++) {
             for (int j = 0; j <= QtdeVertice; j++) {
-                System.out.println(vertice.get(i) + "É LIGADO AO VERTICE " + vertice.get(j) + " ?");
+                System.out.println(vertice[i] + "É LIGADO AO VERTICE " + vertice[j] + " ?");
                 int ligado = in.nextInt();
-                MatrizTemp[i][j] = ligado;
+                MatrizAdj[i][j] = ligado;
             }
             
         }
-        MatrizAdj = MatrizTemp;
     }
     
     public void inicializaMatriz(int[][] Matriz){
@@ -74,7 +77,7 @@ public class Matriz {
         for (int i = 0; i < MatrizAdj.length; i++) {
             for (int j = 0; j < MatrizAdj[i].length; j++) {
                 if (MatrizAdj [i][j] != 0) {
-                    System.out.println(vertice.get(i) + " - " + vertice.get(j) );
+                    System.out.println(vertice[i] + " - " + vertice[j] );
                 }}}
         
     }
@@ -83,7 +86,7 @@ public class Matriz {
         for (int i = 0; i < MatrizAdj.length; i++) {
             for (int j = 0; j < MatrizAdj[i].length; j++) {
                 if (MatrizAdj [i][j] != 0) {
-                    System.out.println(vertice.get(i) + " -> " + MatrizAdj [i][j] + " -> " + vertice.get(j) );
+                    System.out.println(vertice[i] + " -> " + MatrizAdj [i][j] + " -> " + vertice[j] );
                 }}}
         
     }
@@ -98,7 +101,7 @@ public class Matriz {
            
            dt[0] = 0;
            antecessor[0] = 0;
-           int ant = 0;
+           //int ant = 0;
            for (int i = 1; i < numVertic; i++) {
                dt[i] = MatrizDist[0][i];
                antecessor[i] = 0;

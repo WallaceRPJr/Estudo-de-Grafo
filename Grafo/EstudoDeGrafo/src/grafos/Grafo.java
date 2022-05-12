@@ -4,8 +4,8 @@ public class Grafo {
         Matriz qualquer = new Matriz();
         qualquer.QuantidadeVertice();
         qualquer.ContaVertice();
-        qualquer.inicializaMatriz(qualquer.MatrizDistancia);
-        qualquer.ConstruindoMatrizDistancia();
-        qualquer.imprimeMatrizDistancia(qualquer.MatrizDistancia);
+        qualquer.inicializaMatriz(qualquer.MatrizAdj);
+        qualquer.ConstruindoMatrizAdj();
+        qualquer.imprimeMatrizAdj(qualquer.MatrizAdj);
     }
 }
